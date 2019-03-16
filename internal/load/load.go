@@ -5,6 +5,7 @@ package load
 
 import (
 	"flag"
+	"fmt"
 	"os"
 	"regexp"
 	"strings"
@@ -15,6 +16,7 @@ import (
 	"github.com/ajruckman/dbunk-staging/internal/config"
 	"github.com/ajruckman/dbunk-staging/internal/genrules"
 	"github.com/ajruckman/dbunk-staging/internal/log"
+	"github.com/ajruckman/dbunk-staging/pkg/stack"
 )
 
 func init() {
@@ -26,6 +28,10 @@ func init() {
 
 func ParseConfig(cont *caddy.Controller) {
 	cont.Next()
+
+	go func(){
+		fmt.Println(stack.Stack())
+	}()
 
 	var last string
 
@@ -92,7 +98,7 @@ func ParseConfig(cont *caddy.Controller) {
 			case "{", "}":
 
 			default:
-				log.Info("Ignoring unkonwn config parameter:", v)
+				log.Info("Ignoring unkonwn config parameter: " + v)
 			}
 		}
 	}

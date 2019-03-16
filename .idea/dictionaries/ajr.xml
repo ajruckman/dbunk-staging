@@ -10,9 +10,12 @@
       <w>interceptforwards</w>
       <w>killswitch</w>
       <w>logunmatchedqueries</w>
+      <w>macaddr</w>
+      <w>nruntime</w>
       <w>oneshot</w>
       <w>postgre</w>
       <w>printstatistics</w>
+      <w>rcode</w>
       <w>ruckman</w>
       <w>spoofeda</w>
       <w>spoofedaaaa</w>

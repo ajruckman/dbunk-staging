@@ -4,6 +4,7 @@ package genrules
 
 import (
     "bufio"
+    "fmt"
     "net/http"
     "regexp"
     "sort"
@@ -38,19 +39,21 @@ func GenRules() {
     log.Info("Saving rules")
     saveRules(rules)
 
-    log.Info("Rule generator completed in ", time.Since(begin))
+    log.Info("Rule generator completed", log.F{
+        "Duration": time.Since(begin),
+    })
 }
 
 func reset() {
     _, err := dbunkdb.DB.DB.Exec(`TRUNCATE TABLE blacklist`)
-    log.Err(err)
+    log.Error(err)
 }
 
 func mapExistingRules() (seen map[string]map[string]bool) {
     seen = map[string]map[string]bool{}
 
     existing, err := dbunkdb.Blacklist()
-    log.Err(err)
+    log.Error(err)
 
     for _, v := range existing {
         seen[v.Source][*v.Host] = true
@@ -69,7 +72,7 @@ func readSources() (hosts []schema.Blacklist) {
         insSource(url)
 
         resp, err := http.Get(url)
-        log.Err(err)
+        log.Error(err)
 
         scanner := bufio.NewScanner(resp.Body)
         for scanner.Scan() {
@@ -112,7 +115,7 @@ func readSources() (hosts []schema.Blacklist) {
         }
     }
 
-    log.Info("Skips: ", skips)
+    log.Info(fmt.Sprintf("Skips: %d", skips))
 
     return
 }
@@ -123,7 +126,7 @@ func insSource(source string) {
 	  VALUES ($1, TRUE)
 	  ON CONFLICT DO NOTHING`,
         source)
-    log.Err(err)
+    log.Error(err)
 }
 
 func sortHosts(hosts []schema.Blacklist) {
@@ -188,7 +191,7 @@ func hostsToRules(hosts []schema.Blacklist) (rules []schema.Blacklist) {
     }
 
     bar.Finish()
-    log.Info("Skips: ", skips)
+    log.Info(fmt.Sprintf("Skips: %d", skips))
 
     return
 }
@@ -208,7 +211,7 @@ func saveRules(rules []schema.Blacklist) {
             v.Rule.String(),
             v.Host,
             v.Source)
-        log.Err(err)
+        log.Error(err)
     }
 
     bar.Finish()

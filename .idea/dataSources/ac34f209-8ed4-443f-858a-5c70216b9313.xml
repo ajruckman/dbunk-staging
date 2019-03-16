@@ -19,7 +19,7 @@ sequence|table|16398|16400|1
       <ObjectId>16586</ObjectId>
       <StateNumber>408117</StateNumber>
       <Owner>postgres</Owner>
-      <IntrospectionStateNumber>833366</IntrospectionStateNumber>
+      <IntrospectionStateNumber>2219837</IntrospectionStateNumber>
       <Current>1</Current>
       <Visible>1</Visible>
       <Relations>sequence|table|16634|16636|1
@@ -121,7 +121,7 @@ sequence|table|16398|16400|1
       <Comment>standard public schema</Comment>
       <StateNumber>359</StateNumber>
       <Owner>postgres</Owner>
-      <IntrospectionStateNumber>833367</IntrospectionStateNumber>
+      <IntrospectionStateNumber>2219838</IntrospectionStateNumber>
       <Current>1</Current>
       <Visible>1</Visible>
     </schema>
@@ -192,7 +192,7 @@ sequence|table|16398|16400|1
     <table id="29" parent="20" name="blacklist">
       <ObjectId>16603</ObjectId>
       <Owner>DbunkMgr</Owner>
-      <StateNumber>833364</StateNumber>
+      <StateNumber>2219833</StateNumber>
     </table>
     <table id="30" parent="20" name="leases">
       <ObjectId>16624</ObjectId>
@@ -212,7 +212,7 @@ sequence|table|16398|16400|1
     <table id="33" parent="20" name="whitelist">
       <ObjectId>16616</ObjectId>
       <Owner>DbunkMgr</Owner>
-      <StateNumber>434200</StateNumber>
+      <StateNumber>2219836</StateNumber>
     </table>
     <column id="34" parent="29" name="key">
       <Position>1</Position>
@@ -243,7 +243,7 @@ sequence|table|16398|16400|1
     </column>
     <index id="38" parent="29" name="blacklist_pk">
       <ObjectId>16609</ObjectId>
-      <StateNumber>833364</StateNumber>
+      <StateNumber>2219833</StateNumber>
       <ColNames>rule
 source</ColNames>
       <Unique>1</Unique>
@@ -482,13 +482,13 @@ rule</ColNames>
     </column>
     <column id="73" parent="33" name="macs">
       <Position>7</Position>
-      <DataType>char(17) []|0s</DataType>
-      <StateNumber>434200</StateNumber>
-      <TypeId>1014</TypeId>
+      <DataType>macaddr[]|0s</DataType>
+      <StateNumber>2219836</StateNumber>
+      <TypeId>1040</TypeId>
     </column>
     <index id="74" parent="33" name="whitelist_pk">
       <ObjectId>16622</ObjectId>
-      <StateNumber>434200</StateNumber>
+      <StateNumber>2219836</StateNumber>
       <ColNames>rule</ColNames>
       <Unique>1</Unique>
     </index>
