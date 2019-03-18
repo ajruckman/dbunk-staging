@@ -14,7 +14,7 @@ import (
     "github.com/miekg/dns"
 
     "github.com/ajruckman/dbunk-staging/internal/load"
-    "github.com/ajruckman/dbunk-staging/internal/serve"
+    "github.com/ajruckman/dbunk-staging/internal/dbunk"
 )
 
 func init() {
@@ -46,5 +46,5 @@ func (e Dbunk) Name() string {
 }
 
 func (e Dbunk) ServeDNS(ctx context.Context, w dns.ResponseWriter, r *dns.Msg) (int, error) {
-    return serve.Serve(e.Next, ctx, w, r)
+    return dbunk.Serve(e.Next, ctx, w, r)
 }
