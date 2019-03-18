@@ -1,0 +1,4 @@
+.idea/
+.git/
+backup.ps1
+/**/*.exe
